@@ -1,0 +1,72 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { font-family: 'Jua', sans-serif; overflow: hidden; }
+
+.village-map {
+    width: 100vw; height: 100vh;
+    background-image: url('../images/village-bg.jfif'); /* 확장자 꼭 확인하세요! */
+    background-size: cover; background-position: center;
+    position: relative; /* 자식 요소들의 절대 위치 기준점이 됩니다 */
+}
+
+.top-menu { position: absolute; top: 20px; right: 20px; z-index: 100; }
+
+.mini-login-btn {
+    display: flex; align-items: center; padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.9); border: 2px solid #ddd;
+    border-radius: 30px; cursor: pointer; font-family: 'Jua', sans-serif; font-size: 1rem;
+}
+.mini-icon { width: 20px; margin-right: 10px; }
+#user-info { background: rgba(255, 255, 255, 0.9); padding: 10px 20px; border-radius: 30px; font-weight: bold; }
+
+/* 공통 디자인 (표지판과 집) */
+/* 표지판 디자인 (기존 배경, 테두리 싹 지우고 이미지만 보이게!) */
+.signpost {
+    position: absolute; 
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.signpost:hover {
+    transform: scale(1.1); /* 마우스 올리면 집처럼 살짝 커지게 */
+}
+
+/* 표지판 그림 자체의 크기 조절 */
+.sign-img {
+    width: 150px; /* 표지판이 너무 크거나 작으면 이 숫자를 조절하세요 */
+    filter: drop-shadow(0px 5px 5px rgba(0,0,0,0.2)); /* 그림자 효과 추가 */
+}
+.house {
+    position: absolute; /* 절대 위치 사용 */
+    text-align: center; cursor: pointer; transition: transform 0.2s; width: 120px;
+}
+.house:hover { transform: scale(1.1); }
+.house .roof { font-size: 60px; margin-bottom: 5px; }
+.house .name {
+    background: rgba(255, 255, 255, 0.9); padding: 5px 8px; border-radius: 8px;
+    font-size: 1rem; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.1); color: #333;
+}
+
+
+/* =========================================
+   여기가 핵심입니다! 각 요소의 위치(%) 지정
+   top은 위에서부터의 거리, left는 왼쪽에서부터의 거리입니다.
+   숫자를 조금씩 바꿔가며 선생님의 배경화면 길에 딱 맞춰보세요!
+========================================= */
+
+/* 표지판 위치 (화면 양쪽 아래) */
+#sign-kor  { bottom: 10%; left: 10%; scale: 1.1; }
+#sign-math { bottom: 10%; right: 10%; scale: 1.1; }
+/* 국어마을 집 6채 위치 (앞쪽은 크게, 뒤쪽은 작게 설정한 예시) */
+#kor-1 { top: 70%; left: 25%; scale: 1.2; } /* 맨 앞이니까 제일 크게 */
+#kor-2 { top: 60%; left: 20%; scale: 1.1; }
+#kor-3 { top: 50%; left: 15%; scale: 1.0; } /* 기본 크기 */
+#kor-4 { top: 40%; left: 12%; scale: 0.9; }
+#kor-5 { top: 30%; left: 18%; scale: 0.8; }
+#kor-6 { top: 20%; left: 25%; scale: 0.7; } /* 맨 뒤니까 제일 작게 */
+
+/* 수학마을 집 4채 위치 (마찬가지로 원근감 적용) */
+#math-1 { top: 70%; left: 65%; scale: 1.2; }
+#math-2 { top: 55%; left: 75%; scale: 1.0; }
+#math-3 { top: 40%; left: 70%; scale: 0.8; }
+#math-4 { top: 25%; left: 80%; scale: 0.6; }
