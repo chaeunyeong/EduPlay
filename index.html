@@ -14,10 +14,10 @@
         <div id="auth-section" class="top-menu">
             <button id="login-btn" class="mini-login-btn" onclick="googleLogin()">
                 <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/action/google.svg" class="mini-icon"> 
-                기록 저장용 로그인
+                로그인
             </button>
             <div id="user-info" style="display: none;">
-                <span id="user-name"></span>님, 환영해요!
+                <span id="user-name"></span>님, 환영합니다!
             </div>
         </div>
 
@@ -28,8 +28,9 @@
             <img src="images/sign-math.png" class="sign-img">
         </div>
 
-        <div id="kor-1" class="house" onclick="selectLearning('통글자')">
-            <img src="images/house-kor-1.png" class="roof-img">
+        <a href="kor1_room.html" id="kor-1" class="house">
+    <img src="images/house-kor-1.png" class="roof-img">
+</a>
         </div>
         <div id="kor-2" class="house" onclick="selectLearning('자음모음')">
             <img src="images/house-kor-2.png" class="roof-img">
@@ -43,9 +44,7 @@
         <div id="kor-5" class="house" onclick="selectLearning('문장')">
             <img src="images/house-kor-5.png" class="roof-img">
         </div>
-        <div id="kor-6" class="house" onclick="selectLearning('이야기')">
-            <img src="images/house-kor-6.png" class="roof-img">
-        </div>
+        
 
         <div id="math-1" class="house" onclick="selectLearning('수세기')">
             <img src="images/house-math-1.png" class="roof-img">
