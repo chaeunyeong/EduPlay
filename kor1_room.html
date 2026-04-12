@@ -6,27 +6,26 @@
     <title>통글자 놀이방 - 에듀플레이</title>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <style>
-        /* 1. 기본 설정: 여백 없애기 */
+        /* 1. 기본 설정 */
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Jua', sans-serif;
-            overflow: hidden; /* 스크롤바 없애기 */
-            background-color: #fce4ec; /* 배경색 (파스텔 핑크) */
+            overflow: hidden;
+            background-color: #fce4ec;
         }
 
         /* 2. 방 배경 이미지 설정 */
         .room-bg {
-            width: 100vw; /* 화면 너비에 맞춤 */
-            height: 100vh; /* 화면 높이에 맞춤 */
-            /* 🌟 여기에 방금 저장한 배경 이미지 경로를 넣습니다! 확장자 확인! */
+            width: 100vw;
+            height: 100vh;
             background-image: url('images/kor/kor-1/bg.png');
-            background-size: cover; /* 이미지가 잘려도 화면을 꽉 채움 */
-            background-position: center; /* 이미지를 중앙에 맞춤 */
-            position: relative; /* 자식 요소들의 기준점 */
+            background-size: 100% 100%; /* 배경을 화면에 딱 맞게 고정 */
+            background-position: center;
+            position: relative;
         }
 
-        /* 3. 돌아가기 버튼 디자인 */
+        /* 3. 돌아가기 버튼 */
         .back-btn {
             position: absolute;
             top: 20px;
@@ -40,23 +39,79 @@
             font-size: 1.1rem;
             color: #c51162;
             transition: all 0.3s ease;
-            text-decoration: none; /* 밑줄 없애기 */
+            text-decoration: none;
+            z-index: 100; /* 버튼이 꽃보다 위에 오도록 설정 */
         }
 
         .back-btn:hover {
             background-color: #ff80ab;
             color: white;
-            transform: scale(1.05); /* 마우스 올리면 살짝 커짐 */
+            transform: scale(1.05);
+        }
+
+        /* 4. 클릭할 꽃 아이템 디자인 */
+        .flower-item {
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2)); /* 부드러운 그림자 */
+        }
+
+        .flower-item:hover {
+            transform: scale(1.1) rotate(5deg); /* 마우스 올리면 살짝 커지고 회전 */
+        }
+
+        /* 꽃의 크기를 일정하게 조절 (필요시 조정하세요) */
+        .flower-item img {
+            width: 120px; 
+            height: auto;
         }
     </style>
 </head>
 <body>
 
-    <div class="room-bg">
-        
+    <div class="room-bg" id="item-container">
         <a href="index.html" class="back-btn">⬅️ 마을로 돌아가기</a>
-
         </div>
+
+    <script>
+        // 1. 각 꽃의 위치(좌표)와 연결될 게임 설정
+        // left와 top은 % 단위입니다. 선생님의 배경 그림에 맞춰 숫자를 수정하세요!
+        const flowerData = [
+            { id: 1, left: "15%", top: "70%", game: "apple" },
+            { id: 2, left: "25%", top: "65%", game: "desk" },
+            { id: 3, left: "35%", top: "75%", game: "chair" },
+            { id: 4, left: "45%", top: "60%", game: "pencil" },
+            { id: 5, left: "55%", top: "72%", game: "bag" },
+            { id: 6, left: "65%", top: "68%", game: "book" },
+            { id: 7, left: "75%", top: "78%", game: "melon" },
+            { id: 8, left: "85%", top: "65%", game: "bread" },
+            { id: 9, left: "20%", top: "85%", game: "milk" },
+            { id: 10, left: "80%", top: "85%", game: "water" }
+        ];
+
+        const container = document.getElementById('item-container');
+
+        // 2. 반복문을 사용하여 꽃들을 화면에 배치
+        flowerData.forEach(data => {
+            const flowerDiv = document.createElement('div');
+            flowerDiv.className = 'flower-item';
+            flowerDiv.style.left = data.left;
+            flowerDiv.style.top = data.top;
+
+            // 이미지 태그 생성 (경로: images/kor/kor-1/item_번호.png)
+            flowerDiv.innerHTML = `<img src="images/kor/kor-1/item_${data.id}.png" alt="아이템${data.id}">`;
+
+            // 클릭 이벤트 추가
+            flowerDiv.onclick = function() {
+                // 실제 게임 페이지로 이동하거나 게임 함수를 실행
+                alert(data.game + " 게임을 시작합니다!");
+                // window.location.href = `games/kor-1/${data.game}.html`; // 실제 경로 예시
+            };
+
+            container.appendChild(flowerDiv);
+        });
+    </script>
 
 </body>
 </html>
