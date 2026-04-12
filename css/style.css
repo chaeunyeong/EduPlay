@@ -2,9 +2,9 @@
 
 body { font-family: 'Jua', sans-serif; overflow: hidden; }
 
-.village-map {
+.main-map {
     width: 100vw; height: 100vh;
-    background-image: url('../images/village-bg.jfif'); /* 확장자 꼭 확인하세요! */
+    background-image: url('../images/main/bg.png'); /* 확장자 꼭 확인하세요! */
     background-size: cover; background-position: center;
     position: relative; /* 자식 요소들의 절대 위치 기준점이 됩니다 */
 }
@@ -69,33 +69,33 @@ body { font-family: 'Jua', sans-serif; overflow: hidden; }
     width: 12vw;}
 
 /* 🏠 국어마을 (다시 width vw 수치로 변경!) */
-#kor-1 { top: 35%;
+#kor-1 { top: 52%;
     left: 62%;
-    width: 20vw; } /* 맨 앞 */
-#kor-2 { top: 36%;
-    left: 84%;
-    width: 13vw;}
-#kor-3 { top: 24%;
-    left: 53%;
-    width: 12vw; }
-#kor-4 { top: 19%;
-    left: 67%;
+    width: 15vw; } /* 맨 앞 */
+#kor-2 { top: 40%;
+    left: 88%;
+    width: 12vw;}
+#kor-3 { top: 29%;
+    left: 62%;
     width: 10vw; }
-#kor-5 { top: 21%;
-    left: 83%;
-    width: 8vw;}
+#kor-4 { top: 22%;
+    left: 70%;
+    width: 7vw; }
+#kor-5 { top: 26%;
+    left: 84%;
+    width: 5vw;}
 
 
 /* 🏠 수학마을 */
-#math-1 { top: 37%;
+#math-1 { top: 47%;
     left: 23%;
-    width: 20vw; }
+    width: 15vw; }
 #math-2 {top: 39%;
     left: 11%;
-    width: 15vw; }
-#math-3 {top: 19%;
-    left: 31%;
-    width: 12vw; }
-#math-4 { top: 16%;
-    left: 11%;
-    width: 12vw; }
+    width: 13vw; }
+#math-3 {top: 28%;
+    left: 37%;
+    width: 9vw; }
+#math-4 { top: 25%;
+    left: 22%;
+    width: 9vw; }
