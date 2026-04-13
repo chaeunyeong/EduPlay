@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수세기 놀이방 - 에듀플레이</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <style>
+        /* 1. 기본 설정 */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Jua', sans-serif;
+            overflow: hidden;
+            background-color: #fff9c4; /* 배경색 (연한 노란색 - 빵집 느낌) */
+        }
+
+        /* 2. 방 배경 이미지 설정 */
+        .room-bg {
+            width: 100vw;
+            height: 100vh;
+            background-image: url('images/math/math-1/bg.png');
+            background-size: 100% 100%;
+            background-position: center;
+            position: relative;
+        }
+
+        /* 3. 돌아가기 버튼 */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 2px solid #fbc02d; /* 수학방 느낌의 노란색 계열 테두리 */
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Jua', sans-serif;
+            font-size: 1.1rem;
+            color: #f57f17;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .back-btn:hover {
+            background-color: #fbc02d;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* 4. 클릭할 빵 아이템 디자인 */
+        .game-item {
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(3px 5px 8px rgba(0,0,0,0.3)); /* 빵의 입체감을 위한 그림자 */
+        }
+
+        .game-item:hover {
+            transform: scale(1.15) translateY(-5px); /* 마우스 올리면 살짝 위로 뜸 */
+        }
+
+        /* 아이템(빵) 크기 조절 */
+        .game-item img {
+            width: 88px; /* 14개가 들어가야 하므로 조금 작게 조절했습니다 */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="room-bg" id="item-container">
+        <a href="index.html" class="back-btn">⬅️ 마을로 돌아가기</a>
+    </div>
+
+    <script>
+        // 1. 14개 아이템의 위치(좌표)와 연결될 게임 설정
+        // 선반의 위치에 맞춰 초기 좌표를 설정했습니다. 화면을 보며 수치를 미세 조정하세요!
+        const itemData = [
+            // 위쪽 선반 3단
+
+            { id: 2, left: "37%", top: "50%", game: "count_2" },//크루아상
+            { id: 3, left: "43%", top: "49%", game: "count_3" },//바게트
+            //위쪽 선반 2단
+            { id: 4, left: "37%", top: "57%", game: "count_4" },//식빵
+            { id: 5, left: "43%", top: "57%", game: "count_5" },//마카롱
+             //위쪽 선반 1단
+            { id: 6, left: "37%", top: "64%", game: "count_6" }, //파이4개
+            { id: 7, left: "43%", top: "64%", game: "count_7" },//번6개
+
+            //아래 왼쪽 선반
+            { id: 8, left: "13%", top: "73%", game: "count_8" },//초코 크루아상3개
+            { id: 9, left: "21%", top: "73%", game: "count_9" }, //초코식빵 6개
+            { id: 10, left: "13%", top: "80%", game: "count_10" }, //브라우니
+            { id: 1, left: "21%", top: "80%", game: "count_1" },//머핀
+            //아래 오른쪽 선반
+            { id: 11, left: "63%", top: "72%", game: "count_11" },//베이글
+            { id: 12, left: "70%", top: "73%", game: "count_12" },//초코땅콩
+            { id: 13, left: "63%", top: "79%", game: "count_13" },//맘모스
+            { id: 14, left: "70%", top: "79%", game: "count_14" }//프레첼
+        ];
+
+        const container = document.getElementById('item-container');
+
+        // 2. 반복문을 사용하여 아이템들을 화면에 배치
+        itemData.forEach(data => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'game-item';
+            itemDiv.style.left = data.left;
+            itemDiv.style.top = data.top;
+
+            // 이미지 태그 생성 (경로: images/math/math-1/item_번호.png)
+            itemDiv.innerHTML = `<img src="images/math/math-1/item_${data.id}.png" alt="빵${data.id}">`;
+
+            // 클릭 이벤트 추가
+            itemDiv.onclick = function() {
+                alert("수학 게임 " + data.id + "번을 시작합니다!");
+                // window.location.href = `games/math-1/game_${data.id}.html`;
+            };
+
+            container.appendChild(itemDiv);
+        });
+    </script>
+
+</body>
+</html>
